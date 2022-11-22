@@ -1,0 +1,18 @@
+
+<% content_for :title do %>
+  Host Details
+<% end %>
+
+<% content_for :layout do %>
+  <ul>
+    <% @nmap_result.split(/\n/).each do |nmap| %>
+      <li>
+        <%= nmap%>
+      </li>
+    <% end %>
+  </ul>
+
+
+<% end %>
+
+<%= render template: "#{Rails.configuration.settings.KT_THEME_LAYOUT_DIR}/default" %>

@@ -1,0 +1,121 @@
+<% content_for :title do %>
+  Hosts
+<% end %>
+
+<% content_for :layout do %>
+<div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+  <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+  <!--begin::Card widget 17-->
+  <div class="card card-flush">
+    <!--begin::Header-->
+    <div class="card-header pt-5">
+      <!--begin::Title-->
+      <div class="card-title d-flex flex-column">
+        <!--begin::Info-->
+        <div class="d-flex align-items-center">
+          <!--begin::Currency-->
+          <%# <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">$</span> %>
+          <!--end::Currency-->
+          <!--begin::Amount-->
+          <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Protocols</span>
+          <!--end::Amount-->
+          <!--begin::Badge-->
+          <!--end::Badge-->
+        </div>
+        <!--end::Info-->
+        <!--begin::Subtitle-->
+        <span class="text-gray-400 pt-1 fw-semibold fs-6">HTTP/HTTPS/SSH/FTP/SMTP</span>
+        <!--end::Subtitle-->
+      </div>
+      <!--end::Title-->
+    </div>
+    <!--end::Header-->
+    <!--begin::Card body-->
+    <div class="card-body pt-2 pb-5 d-flex align-items-center">
+      <!--begin::Chart-->
+      <div class="d-flex flex-center me-5 pt-2">
+        <div id="kt_card_widget_17_chart" style="min-width: 160px; min-height: 160px" data-kt-size="150" data-kt-line="20"></div>
+      </div>
+      <!--end::Chart-->
+      <!--begin::Labels-->
+      <div class="d-flex flex-column content-justify-center w-100">
+        <!--begin::Label-->
+        <div class="d-flex fw-semibold align-items-center">
+          <!--begin::Bullet-->
+          <div class="bullet w-8px h-3px rounded-2 bg-success me-3"></div>
+          <!--end::Bullet-->
+          <!--begin::Label-->
+          <div class="text-gray-500 flex-grow-1 me-4">HTTP</div>
+          <!--end::Label-->
+          <!--begin::Stats-->
+          <div class="fw-bold text-gray-700 text-xxl-end">50%</div>
+          <!--end::Stats-->
+        </div>
+        <!--end::Label-->
+        <!--begin::Label-->
+        <div class="d-flex fw-semibold align-items-center my-3">
+          <!--begin::Bullet-->
+          <div class="bullet w-8px h-3px rounded-2 bg-primary me-3"></div>
+          <!--end::Bullet-->
+          <!--begin::Label-->
+          <div class="text-gray-500 flex-grow-1 me-4">HTTPS</div>
+          <!--end::Label-->
+          <!--begin::Stats-->
+          <div class="fw-bold text-gray-700 text-xxl-end">30%</div>
+          <!--end::Stats-->
+        </div>
+        <!--end::Label-->
+        <!--begin::Label-->
+        <div class="d-flex fw-semibold align-items-center">
+          <!--begin::Bullet-->
+          <div class="bullet w-8px h-3px rounded-2 me-3" style="background-color: #E4E6EF"></div>
+          <!--end::Bullet-->
+          <!--begin::Label-->
+          <div class="text-gray-500 flex-grow-1 me-4">SSH</div>
+          <!--end::Label-->
+          <!--begin::Stats-->
+          <div class="fw-bold text-gray-700 text-xxl-end">20%</div>
+          <!--end::Stats-->
+        </div>
+        <!--end::Label-->
+      </div>
+      <!--end::Labels-->
+    </div>
+    <!--end::Card body-->
+  </div>
+  </div>
+  <!--end::Card widget 17-->
+</div>
+<div class="row">
+<table id="kt_datatable_column_rendering" class="table table-striped table-row-bordered gy-5 gs-7">
+    <thead>
+        <tr class="fw-semibold fs-6 text-gray-800">
+            <th>Host</th>
+            <th>Port Number</th>
+            <th>Protocol</th>
+            <th>Service</th>
+            <th>Service version</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @services.each do |service| %>
+        <tr>
+            <td><%= service.host %></td>
+            <td><%= service.port %></td>
+            <td><%= service.protocol %></td>
+            <td><%= service.service %></td>
+            <td><%= service.service_version %></td>
+            <td><a href="/hosts/<%= service.id %>">Options</a></td>
+            <td><a href="/hosts/<%= service.id %>">Details</a></td>
+        </tr>
+    <% end %>
+
+    </tbody>
+</table>
+</div>
+<% end %>
+
+
+<%= render template: "#{Rails.configuration.settings.KT_THEME_LAYOUT_DIR}/default" %>
